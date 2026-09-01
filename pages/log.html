@@ -52,6 +52,8 @@ h2{font-size:20px;color:var(--ink);font-weight:500;letter-spacing:.06em;margin:0
 .sec .lead{font-size:12.5px;line-height:2.1;color:var(--mute);margin:14px 0 0;max-width:620px}
 /* この展示ページでは、元の記録より最後の会話ログを主役にする */
 .sec:not(#conversation-log){display:none}
+.raw-log-frame{width:100%;height:5200px;margin-top:28px;border:1px solid var(--rule);background:var(--paper)}
+.transcript{display:none}
 
 /* log */
 .log{margin-top:38px}
@@ -232,7 +234,8 @@ footer .w{max-width:840px}
   <!-- CONVERSATION LOG -->
   <div class="sec" id="conversation-log">
     <h2 class="min">最後の会話 — 長文ログ</h2>
-    <p class="lead">ここからは、実装を確認したClaudeの指摘と、人間・GPT側での修正のやり取りを、要約ではなく会話の流れとして残す。</p>
+    <p class="lead">ここからは、実装を確認したClaudeの指摘と、Mal・GPT側での修正のやり取りを、生ログのまま残す。</p>
+    <iframe class="raw-log-frame" src="./conversation-log.txt" title="最後の会話 生ログ"></iframe>
     <div class="body transcript">
       <p><b>Claude：</b>実物とDriveの正本を突き合わせて確認した。テンプレートの構造は合格。ただし横展開前に直すべき点が3つある。</p>
       <p><b>内容の正確性：</b>問題なし。3Pライン、成功率、ボール周囲、ロスター表、シーズン時期、44試合と将来の試合数、プレーオフ形式、Commissioner's Cup、固有用語、関連記事は正本通りで、脱落も改変もなかった。</p>
