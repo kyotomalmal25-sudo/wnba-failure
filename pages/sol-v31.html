@@ -1,0 +1,324 @@
+<!doctype html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WNBA Japan（Sol実装 v3.1）</title><style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
+
+:root {
+  --ink:#101010;
+  --body:#373431;
+  --muted:#6d6861;
+  --paper:#f4f1eb;
+  --surface:#fbfaf7;
+  --tint:#e9e5dd;
+  --orange:#f05a36;
+  --orange-soft:#f7e3da;
+  --turquoise:#3ed6c7;
+  --teal:#1fa083;
+  --line:rgba(16,16,16,.14);
+  --radius:22px;
+}
+
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--body); background:var(--paper); font-family:'IBM Plex Sans JP','DM Sans',sans-serif; }
+a { color:inherit; text-decoration:none; }
+button { font:inherit; }
+
+.site-header { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; height:76px; padding:0 5vw; background:rgba(244,241,235,.94); backdrop-filter:blur(16px); border-bottom:1px solid var(--line); }
+.brand { display:flex; align-items:center; gap:10px; color:var(--ink); font:700 14px/1 'DM Sans',sans-serif; letter-spacing:-.04em; }
+.brand em { color:var(--orange); font-size:9px; font-style:normal; letter-spacing:.22em; }
+.brand-mark { display:block; width:31px; height:31px; object-fit:contain; }
+.main-nav { display:flex; gap:34px; font-size:13px; }
+.main-nav a,.text-link,.back-home { transition:color .2s ease; }
+.main-nav a:hover,.text-link:hover,.back-home:hover { color:var(--orange); }
+.header-cta,.button { display:inline-flex; align-items:center; gap:12px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.04em; }
+.header-cta { padding:13px 18px; color:#fff; background:var(--orange); }
+.header-cta span { font-size:16px; }
+.menu-button { display:none; padding:0; border:0; color:var(--body); background:none; font:600 11px 'DM Sans',sans-serif; letter-spacing:.12em; }
+
+.hero { display:flex; flex-direction:column; align-items:center; gap:42px; min-height:700px; padding:72px 5vw 76px; overflow:hidden; text-align:center; }
+.hero-copy { max-width:760px; }
+.kicker,.feature-label,.footer-label { display:inline-flex; align-items:center; width:max-content; margin:0 0 22px; padding:7px 10px 6px; border:1px solid rgba(240,90,54,.28); border-radius:999px; color:var(--orange); background:rgba(247,227,218,.46); font:700 10px 'DM Sans',sans-serif; letter-spacing:.16em; }
+.hero h1,.section-heading h2 { margin:0; color:var(--body); font:600 clamp(52px,7.5vw,108px)/.97 'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif; letter-spacing:-.065em; }
+.hero h1 em,.section-heading h2 em { color:var(--body); font-style:normal; }
+.hero-lede { margin:29px 0; color:var(--muted); font-size:16px; line-height:1.9; }
+.hero-actions { display:flex; justify-content:center; align-items:center; gap:27px; }
+.button { padding:16px 21px; }
+.button--dark { color:#fff; background:var(--ink); }
+.text-link { padding-bottom:5px; border-bottom:1px solid var(--body); font-size:12px; font-weight:600; }
+.hero-visual { position:relative; width:min(850px,100%); min-height:300px; margin:0; overflow:hidden; border-radius:var(--radius); background:var(--ink); }
+.hero-visual img { display:block; width:100%; height:100%; min-height:300px; object-fit:cover; object-position:center 48%; filter:saturate(.64) contrast(1.03); }
+.hero-visual:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(0,0,0,.32),transparent 52%,rgba(0,0,0,.08)); pointer-events:none; }
+.hero-visual figcaption { position:absolute; z-index:2; right:25px; bottom:22px; left:25px; display:flex; justify-content:space-between; align-items:end; color:#fff; font:600 10px/1.3 'DM Sans',sans-serif; letter-spacing:.17em; }
+.hero-visual figcaption strong { font-size:38px; letter-spacing:-.07em; }
+
+.content-section { padding:104px 5vw 114px; }
+.content-section--tint { background:var(--tint); }
+.content-section--deep { color:#fff; background:var(--ink); }
+.section-heading { max-width:780px; }
+.section-heading h2 { font-size:clamp(44px,6vw,76px); }
+.section-heading > p:not(.kicker),.section-heading--split > p { margin:27px 0 0; color:var(--muted); font-size:14px; line-height:1.9; }
+.section-heading--split { display:flex; justify-content:space-between; align-items:end; gap:20px; max-width:none; }
+.section-heading--split > p { max-width:390px; margin:0 5vw 8px 0; }
+.content-section--deep .section-heading h2,.content-section--deep .section-heading h2 em { color:#fff; }
+.content-section--deep .section-heading > p { color:#aaa49d; }
+
+.current-section { border-top:1px solid var(--line); }
+.feature-split { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr); gap:18px; margin-top:58px; }
+.feature-visual { position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:520px; padding:28px; overflow:hidden; border-radius:var(--radius); color:#fff; background:var(--ink); isolation:isolate; }
+.feature-visual:before { content:''; position:absolute; z-index:-2; inset:0; background-image:var(--feature-image); background-position:center; background-size:cover; filter:saturate(.58) contrast(1.05); transition:transform .45s ease; }
+.feature-visual:after { content:''; position:absolute; z-index:-1; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.78)); }
+.feature-visual:hover:before { transform:scale(1.025); }
+.feature-visual .feature-label { color:#f7a188; border-color:rgba(255,255,255,.28); background:rgba(16,16,16,.52); }
+.feature-visual h3 { max-width:620px; margin:0; font:600 clamp(32px,4.4vw,58px)/1.08 'Noto Serif JP',serif; letter-spacing:-.055em; }
+.feature-visual p { max-width:500px; margin:15px 0 22px; color:rgba(255,255,255,.76); font-size:13px; line-height:1.8; }
+.feature-visual b { display:inline-block; padding-bottom:5px; border-bottom:1px solid rgba(255,255,255,.7); font-size:12px; }
+.feature-list { align-self:stretch; padding:8px 26px; border-radius:var(--radius); color:#fff; background:var(--ink); }
+.feature-list-row { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:126px; padding:23px 2px; border-bottom:1px solid rgba(255,255,255,.14); }
+.feature-list-row:last-child { border-bottom:0; }
+.feature-list-row span { display:flex; flex-direction:column; gap:5px; }
+.feature-list-row small { color:var(--turquoise); font:700 9px 'DM Sans',sans-serif; letter-spacing:.16em; }
+.feature-list-row strong { font-size:17px; line-height:1.4; }
+.feature-list-row em { color:#aaa49d; font-size:11px; font-style:normal; line-height:1.55; }
+.feature-list-row b { color:var(--orange); font-size:17px; }
+.feature-split--current .feature-list-row small { color:var(--orange); }
+.feature-visual--japan:before { background-position:center 45%; }
+
+.compact-grid { display:grid; gap:14px; margin-top:58px; }
+.compact-grid--two { grid-template-columns:repeat(2,1fr); max-width:1040px; }
+.compact-grid--three { grid-template-columns:repeat(3,1fr); }
+.compact-card { position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:start; gap:18px; min-height:190px; padding:26px; border:1px solid var(--line); border-radius:18px; background:var(--surface); transition:transform .22s ease,border-color .22s ease; }
+.compact-card:hover { transform:translateY(-4px); border-color:rgba(31,160,131,.5); }
+.compact-number { color:var(--teal); font:700 13px 'DM Sans',sans-serif; }
+.compact-copy { display:flex; flex-direction:column; gap:11px; }
+.compact-copy small { color:var(--orange); font:700 9px 'DM Sans',sans-serif; letter-spacing:.14em; }
+.compact-copy strong { color:var(--body); font-size:19px; line-height:1.45; }
+.compact-copy em { color:var(--muted); font-size:12px; font-style:normal; line-height:1.75; }
+.compact-arrow { color:var(--orange); }
+.content-section--deep .compact-card { border-color:rgba(255,255,255,.13); background:#191919; }
+.content-section--deep .compact-copy strong { color:#fff; }
+.content-section--deep .compact-copy em { color:#aaa49d; }
+.content-section--deep .compact-number { color:var(--turquoise); }
+
+.japan-section { background:var(--surface); }
+
+.site-footer { padding:78px 5vw 22px; overflow:hidden; color:#fff; background:var(--ink); }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr .7fr; gap:54px; padding-bottom:72px; }
+.footer-label { margin-bottom:22px; color:var(--orange); border-color:rgba(240,90,54,.32); background:transparent; }
+.footer-column ul { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px 26px; margin:0; padding:0; list-style:none; }
+.footer-column li a { display:flex; gap:9px; color:#d5d1cb; font-size:11px; line-height:1.5; }
+.footer-column li a span { color:#77716a; font:700 9px 'DM Sans',sans-serif; }
+.footer-column p:not(.footer-label) { margin:0; color:#aaa49d; font-size:11px; line-height:1.8; }
+.footer-column strong { color:#fff; font-size:13px; }
+.ai-links { display:flex; flex-direction:column; gap:7px; margin-top:18px; }
+.ai-links a,.back-home { color:#d5d1cb; font-size:11px; }
+.footer-wordmark { margin:0 -1vw -2.8vw; white-space:nowrap; color:#fff; font:700 clamp(74px,16vw,245px)/.78 'DM Sans',sans-serif; letter-spacing:-.09em; }
+.footer-bottom { position:relative; display:flex; justify-content:space-between; padding-top:18px; border-top:1px solid rgba(255,255,255,.17); color:#77716a; font:9px 'DM Sans',sans-serif; letter-spacing:.1em; }
+
+@media (min-width:1300px) {
+  .site-header,.hero,.content-section,.site-footer { padding-left:calc((100vw - 1200px)/2); padding-right:calc((100vw - 1200px)/2); }
+}
+
+@media (max-width:850px) {
+  .main-nav { gap:16px; }
+  .feature-split { grid-template-columns:1fr; }
+  .feature-visual { min-height:440px; }
+  .section-heading--split { display:block; }
+  .section-heading--split > p { margin-top:20px; }
+  .compact-grid--three { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1.5fr 1fr; }
+}
+
+@media (max-width:580px) {
+  .site-header { height:65px; padding:0 20px; }
+  .main-nav { position:absolute; top:65px; right:0; left:0; display:none; flex-direction:column; gap:0; padding:10px 20px 18px; background:var(--paper); border-bottom:1px solid var(--line); }
+  .main-nav.is-open { display:flex; }
+  .main-nav a { padding:12px 0; }
+  .header-cta { display:none; }
+  .menu-button { display:block; }
+  .hero { min-height:0; padding:55px 20px; gap:38px; }
+  .hero h1 { font-size:57px; }
+  .hero-visual,.hero-visual img { min-height:260px; }
+  .hero-actions { flex-direction:column; gap:18px; }
+  .content-section { padding:72px 20px 78px; }
+  .feature-split { margin-top:38px; }
+  .feature-visual { min-height:390px; padding:22px; }
+  .feature-visual h3 { font-size:34px; }
+  .feature-list { padding:2px 20px; }
+  .feature-list-row { min-height:112px; }
+  .compact-grid--two { grid-template-columns:1fr; }
+  .compact-card { min-height:0; padding:22px; }
+  .footer-grid { grid-template-columns:1fr; gap:38px; padding-bottom:58px; }
+  .footer-column ul { grid-template-columns:1fr; }
+  .footer-wordmark { margin-bottom:-2vw; font-size:25vw; }
+  .footer-bottom { flex-direction:column; gap:8px; }
+}
+</style></head><body><div id="app">
+
+  <div id="top"></div>
+  
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="WNBA JAPAN トップへ">
+      <img class="brand-mark" src="/assets/wnba-japan-mark.svg" alt="">
+      <span>WNBA<br><em>JAPAN</em></span>
+    </a>
+    <nav class="main-nav" aria-label="メインナビゲーション">
+      <a href="#start">はじめる</a><a href="#players">選手・チーム</a><a href="#deep">もっと深く</a>
+    </nav>
+    <a class="header-cta" href="/how-to-watch">WATCH WNBA <span>↗</span></a>
+    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">WNBA JAPANESE PORTAL / 2026</p>
+        <h1>WNBAを、<br><em>もっと近くに。</em></h1>
+        <p class="hero-lede">NBAファンとWNBA初心者のための、<br>日本語で読むWNBA編集ポータル。</p>
+        <div class="hero-actions"><a class="button button--dark" href="#start">まずはここから <span>↓</span></a><a class="text-link" href="/teams">全15チームを見る ↗</a></div>
+      </div>
+      <figure class="hero-visual">
+        <img src="/assets/hero-arena.webp" alt="暗いアリーナ通路からコートへ向かうバスケットボール選手の後ろ姿">
+        <figcaption><span>EDITORIAL DESK</span><strong>2026</strong></figcaption>
+      </figure>
+    </section>
+
+    <section class="content-section current-section" id="current">
+      <div class="section-heading"><p class="kicker">CURRENT</p><h2>いま、WNBAを<br><em>知るべき理由。</em></h2></div>
+      <div class="feature-split feature-split--current">
+        <a class="feature-visual" href="/superstars" style="--feature-image:url('/assets/feature-crossover.webp')">
+          <span class="feature-label">FEATURED ARTICLE</span>
+          <div><h3>今見るべき<br>スーパースター10選</h3><p>誰を知れば、いまのWNBAが見えてくるのか。</p><b>記事を読む ↗</b></div>
+        </a>
+        <div class="feature-list">
+  <a class="feature-list-row" href="/teams">
+    <span><small>LEAGUE</small><strong>15チームの勢力図</strong><em>拡張後のリーグ全体を俯瞰する。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/business/cba-2026">
+    <span><small>2026</small><strong>新CBAとリーグ拡張</strong><em>ビジネス面から変化を読む。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/nba-fans-guide">
+    <span><small>START</small><strong>NBAファン向け超入門</strong><em>最初の5分で違いをつかむ。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/how-to-watch">
+    <span><small>WATCH</small><strong>日本から試合を見る</strong><em>配信サービスと視聴手順を確認。</em></span>
+    <b>↗</b>
+  </a></div>
+      </div>
+    </section>
+
+    <section class="content-section" id="start">
+      <div class="section-heading"><p class="kicker">START</p><h2>はじめての人は<br><em>ここから。</em></h2><p>まずはこの2本。観戦に必要な情報を、軽く、正確に。</p></div>
+      <div class="compact-grid compact-grid--two">
+  <a class="compact-card" href="/nba-fans-guide">
+    <span class="compact-number">01</span>
+    <span class="compact-copy"><small>START</small><strong>NBAファン向け WNBA超入門</strong><em>ルール、試合時間、リーグの見どころを最短でつかむ。</em></span>
+    <span class="compact-arrow">↗</span>
+  </a>
+  <a class="compact-card" href="/how-to-watch">
+    <span class="compact-number">02</span>
+    <span class="compact-copy"><small>WATCH</small><strong>日本からWNBAを見る方法</strong><em>League Passや配信サービスで、今日から観戦を始める。</em></span>
+    <span class="compact-arrow">↗</span>
+  </a></div>
+    </section>
+
+    <section class="content-section content-section--tint" id="players">
+      <div class="section-heading section-heading--split"><div><p class="kicker">PLAYERS</p><h2>選手・チームを<br><em>知る。</em></h2></div><p>スターの個性とチームの文化を、ひとつの入口から。</p></div>
+      <div class="feature-split">
+        <a class="feature-visual" href="/superstars" style="--feature-image:url('/assets/feature-crossover.webp')">
+          <span class="feature-label">SUPERSTARS</span>
+          <div><h3>プレーの違いが、<br>観戦の入口になる。</h3><p>得点だけでは見えない、スターの役割を読む。</p><b>10選手を見る ↗</b></div>
+        </a>
+        <div class="feature-list">
+  <a class="feature-list-row" href="/superstars">
+    <span><small>01</small><strong>A'ja Wilson</strong><em>攻守の基準点となるペイント支配力。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/superstars">
+    <span><small>02</small><strong>Caitlin Clark</strong><em>ディープ3Pの重力と高速パス。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/superstars">
+    <span><small>03</small><strong>Breanna Stewart</strong><em>サイズと機動力を兼ねる万能性。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/teams">
+    <span><small>TEAMS</small><strong>推しチームを見つける</strong><em>全15チームの特徴と診断へ。</em></span>
+    <b>↗</b>
+  </a></div>
+      </div>
+    </section>
+
+    <section class="content-section japan-section" id="japan">
+      <div class="section-heading section-heading--split"><div><p class="kicker">JAPAN</p><h2>日本人選手の<br><em>現在地。</em></h2></div><p>挑戦の歴史と、ロスターを勝ち取る難しさを追う。</p></div>
+      <div class="feature-split feature-split--reverse">
+        <a class="feature-visual feature-visual--japan" href="/japan" style="--feature-image:url('/assets/japan-challenger.webp')">
+          <span class="feature-label">JAPAN CONNECTION</span>
+          <div><h3>世界最高峰へ。<br>つながる挑戦。</h3><p>過去の足跡から2026年の現在地まで。</p><b>特集を読む ↗</b></div>
+        </a>
+        <div class="feature-list">
+  <a class="feature-list-row" href="/japan">
+    <span><small>HISTORY</small><strong>歴代5人の軌跡</strong><em>日本人選手が拓いた道をたどる。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/japan">
+    <span><small>2026</small><strong>山本麻衣の現在地</strong><em>公式記録と契約動向を整理。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/japan">
+    <span><small>NEXT</small><strong>田中こころの挑戦</strong><em>指名後の状況と将来性を見る。</em></span>
+    <b>↗</b>
+  </a>
+  <a class="feature-list-row" href="/japan">
+    <span><small>SYSTEM</small><strong>ロスターの壁</strong><em>契約と育成枠の仕組みを知る。</em></span>
+    <b>↗</b>
+  </a></div>
+      </div>
+    </section>
+
+    <section class="content-section content-section--deep" id="deep">
+      <div class="section-heading section-heading--split"><div><p class="kicker">DEEP DIVE</p><h2>もっと<br><em>深く。</em></h2></div><p>NBAの知識を持っている人へ。戦術、数字、ビジネスまで。</p></div>
+      <div class="compact-grid compact-grid--three">
+  <a class="compact-card" href="/nba-translation">
+    <span class="compact-number">06</span>
+    <span class="compact-copy"><small>TACTICS</small><strong>WNBAをNBAに翻訳する</strong><em>スターとチームスタイルを、戦術の機能で比較する。</em></span>
+    <span class="compact-arrow">↗</span>
+  </a>
+  <a class="compact-card" href="/advanced-stats">
+    <span class="compact-number">07</span>
+    <span class="compact-copy"><small>NUMBERS</small><strong>WNBA観戦リテラシー</strong><em>40分制とアドバンスドスタッツで試合を深く読む。</em></span>
+    <span class="compact-arrow">↗</span>
+  </a>
+  <a class="compact-card" href="/business/cba-2026">
+    <span class="compact-number">08</span>
+    <span class="compact-copy"><small>BUSINESS</small><strong>WNBAビジネス白書</strong><em>新CBA、年俸、拡張構想からリーグの未来を見る。</em></span>
+    <span class="compact-arrow">↗</span>
+  </a></div>
+    </section>
+  </main>
+  
+  <footer class="site-footer" id="about">
+    <div class="footer-grid">
+      <section class="footer-column footer-column--read">
+        <p class="footer-label">READ</p>
+        <ul><li><a href="/nba-fans-guide"><span>01</span>NBAファン向け WNBA超入門</a></li><li><a href="/how-to-watch"><span>02</span>日本からWNBAを見る方法</a></li><li><a href="/superstars"><span>03</span>今見るべきWNBAスーパースター10選</a></li><li><a href="/teams"><span>04</span>全15チーム一覧・勢力図＆推しチーム診断</a></li><li><a href="/japan"><span>05</span>日本人WNBA挑戦者ウォッチ</a></li><li><a href="/nba-translation"><span>06</span>WNBAをNBAに翻訳する</a></li><li><a href="/advanced-stats"><span>07</span>WNBA観戦リテラシー</a></li><li><a href="/business/cba-2026"><span>08</span>WNBAビジネス白書</a></li></ul>
+      </section>
+      <section class="footer-column">
+        <p class="footer-label">ABOUT</p>
+        <p>NBAファンとWNBA初心者のための、日本語で読むWNBA編集ポータル。</p>
+      </section>
+      <section class="footer-column">
+        <p class="footer-label">CREDIT</p>
+        <p>AI EDITORIAL DESK<br><strong>GPT · Claude · Gemini</strong></p>
+        <div class="ai-links"><a href="https://www.anthropic.com/" target="_blank" rel="noreferrer">Anthropic</a><a href="https://openai.com/" target="_blank" rel="noreferrer">OpenAI</a><a href="https://ai.google/" target="_blank" rel="noreferrer">Google</a></div>
+      </section>
+      <section class="footer-column">
+        <p class="footer-label">HOME</p>
+        <a class="back-home" href="#top">トップへ戻る ↑</a>
+      </section>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">WNBA JAPAN</div>
+    <div class="footer-bottom"><span>© 2026 WNBA JAPAN</span><span>INDEPENDENT EDITORIAL PORTAL</span></div>
+  </footer></div></body></html>

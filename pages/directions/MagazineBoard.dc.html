@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #f4f1eb; }
+    a { color: #f05a36; text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #f4f1eb; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; color: #373431;">
+
+  <!-- nav -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 24px 64px; border-bottom: 3px solid #101010;">
+    <span style="font-family: 'Zen Old Mincho', serif; font-size: 20px; font-weight: 700; color: #101010;">WNBA 日本語ポータル</span>
+    <div style="display: flex; gap: 26px; font-size: 12px; color: #373431; font-weight: 500;">
+      <span style="color: #f05a36;">はじめる</span><span>選手</span><span>チーム</span><span>日本人選手</span><span>深く読む</span>
+    </div>
+  </div>
+
+  <!-- hero：非対称の雑誌グリッド、写真をコラージュ的に -->
+  <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 3px; padding: 3px 0 0;">
+    <div style="position: relative; height: 520px;">
+      <img src="hero-arena.webp" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.75);">
+      <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(16,16,16,.75) 0%, transparent 55%);"></div>
+      <div style="position: absolute; left: 40px; bottom: 36px; right: 40px;">
+        <div style="display: inline-block; padding: 6px 14px; background: #f05a36; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .08em; margin-bottom: 18px;">2026 SEASON GUIDE</div>
+        <div style="font-family: 'Zen Old Mincho', serif; font-size: 46px; font-weight: 700; line-height: 1.28; color: #fff;">
+          NBAファンのための<br>WNBA入門、はじめます。
+        </div>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 3px;">
+      <div style="position: relative;">
+        <img src="japan-challenger.webp" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.75);">
+        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(16,16,16,.7) 0%, transparent 60%);"></div>
+        <div style="position: absolute; left: 28px; bottom: 22px; color: #fff;">
+          <div style="font-size: 10px; color: #3ed6c7; font-weight: 700; margin-bottom: 6px;">05 日本人選手</div>
+          <div style="font-size: 17px; font-weight: 600;">日本人挑戦者ウォッチ</div>
+        </div>
+      </div>
+      <div style="position: relative;">
+        <img src="feature-crossover.webp" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.75);">
+        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(16,16,16,.7) 0%, transparent 60%);"></div>
+        <div style="position: absolute; left: 28px; bottom: 22px; color: #fff;">
+          <div style="font-size: 10px; color: #f7cbb8; font-weight: 700; margin-bottom: 6px;">01 はじめる</div>
+          <div style="font-size: 17px; font-weight: 600;">WNBA超入門</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 見出し帯：大きな引用符的な導入コピー -->
+  <div style="padding: 70px 64px 50px; border-bottom: 1px solid rgba(16,16,16,.12);">
+    <div style="display: grid; grid-template-columns: 90px 1fr; gap: 30px;">
+      <div style="font-family: 'Zen Old Mincho', serif; font-size: 64px; color: #f05a36; line-height: .8;">「</div>
+      <div style="font-family: 'Zen Old Mincho', serif; font-size: 27px; line-height: 1.75; color: #101010; max-width: 900px;">
+        知らないリーグを追いかける一番の近道は、まず読むこと。8本の記事に、必要な情報を全部詰め込みました。
+      </div>
+    </div>
+  </div>
+
+  <!-- 記事リスト：雑誌の目次っぽく、番号は縦棒スタイル -->
+  <div style="padding: 56px 64px 80px;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px 32px;">
+      <div style="border-left: 3px solid #f05a36; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">01 — 入門</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">WNBA超入門</div>
+      </div>
+      <div style="border-left: 3px solid #f05a36; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">02 — 入門</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">日本から見る方法</div>
+      </div>
+      <div style="border-left: 3px solid #f05a36; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">03 — 入門</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">スーパースター10選</div>
+      </div>
+      <div style="border-left: 3px solid #f05a36; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">04 — 入門</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">全15チーム勢力図</div>
+      </div>
+      <div style="border-left: 3px solid #3ed6c7; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">05 — 日本人選手</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">日本人挑戦者ウォッチ</div>
+      </div>
+      <div style="border-left: 3px solid #1fa083; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">06 — コア</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">NBAへの翻訳</div>
+      </div>
+      <div style="border-left: 3px solid #1fa083; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">07 — コア</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">観戦リテラシー</div>
+      </div>
+      <div style="border-left: 3px solid #1fa083; padding-left: 18px;">
+        <div style="font-size: 10px; color: #6d6861; letter-spacing: .1em; margin-bottom: 10px;">08 — コア</div>
+        <div style="font-size: 15px; font-weight: 700; color: #101010; line-height: 1.6;">ビジネス白書</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 26px 64px; background: #101010; color: #77716a; display: flex; justify-content: space-between; font-size: 10px; letter-spacing: .1em;">
+    <span>EDITORIAL: CLAUDE · GPT · GEMINI</span>
+    <span>© 2026 WNBA JAPAN</span>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

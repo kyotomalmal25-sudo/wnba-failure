@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #101010; }
+    a { color: #f05a36; text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #101010; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; color: #f4f1eb;">
+
+  <!-- nav：黒地、太字、スポーツメディアの密度 -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 56px; border-bottom: 2px solid #f05a36;">
+    <span style="font-family: 'Oswald', sans-serif; font-size: 22px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;">WNBA JAPAN</span>
+    <div style="display: flex; gap: 30px; font-family: 'Oswald', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #d5d1cb;">
+      <span style="color: #f05a36;">TOP</span><span>PLAYERS</span><span>TEAMS</span><span>JAPAN</span><span>DEEP DIVE</span>
+    </div>
+    <div style="padding: 10px 20px; background: #f05a36; font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .04em;">WATCH →</div>
+  </div>
+
+  <!-- hero：試合前夜の熱、大見出しは英語主体 -->
+  <div style="position: relative; height: 620px; overflow: hidden;">
+    <img src="hero-arena.webp" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) contrast(1.1) brightness(.72);">
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(16,16,16,.94) 0%, rgba(16,16,16,.55) 45%, rgba(16,16,16,.15) 100%);"></div>
+    <div style="position: absolute; left: 56px; bottom: 64px; max-width: 760px;">
+      <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; background: #f05a36; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; margin-bottom: 26px;">2026 SEASON GUIDE</div>
+      <div style="font-family: 'Oswald', sans-serif; font-size: 84px; font-weight: 700; line-height: .96; text-transform: uppercase; letter-spacing: -.01em;">
+        NEW TO<br><span style="color: #f05a36;">WNBA?</span>
+      </div>
+      <div style="font-size: 15px; line-height: 1.9; color: #d5d1cb; margin-top: 26px; max-width: 480px;">
+        NBAは知っている。WNBAはまだ。その距離を、日本語の8本で埋める。
+      </div>
+    </div>
+  </div>
+
+  <!-- ライブ帯：スコアボード風の横スクロール入口 -->
+  <div style="display: flex; align-items: center; gap: 0; padding: 0; background: #191919; border-bottom: 1px solid rgba(255,255,255,.08);">
+    <div style="padding: 16px 24px; font-family: 'Oswald', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .1em; color: #3ed6c7; border-right: 1px solid rgba(255,255,255,.08);">NOW READING</div>
+    <div style="display: flex; flex: 1;">
+      <div style="flex: 1; padding: 16px 22px; border-right: 1px solid rgba(255,255,255,.08); font-size: 12px; color: #d5d1cb;">01 超入門</div>
+      <div style="flex: 1; padding: 16px 22px; border-right: 1px solid rgba(255,255,255,.08); font-size: 12px; color: #d5d1cb;">04 全15チーム</div>
+      <div style="flex: 1; padding: 16px 22px; border-right: 1px solid rgba(255,255,255,.08); font-size: 12px; color: #d5d1cb;">05 日本人選手</div>
+      <div style="flex: 1; padding: 16px 22px; font-size: 12px; color: #d5d1cb;">08 ビジネス白書</div>
+    </div>
+  </div>
+
+  <!-- カードグリッド：スタッツカード風、写真+番号 -->
+  <div style="padding: 74px 56px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px;">
+      <div style="font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; text-transform: uppercase;">Start Here</div>
+      <div style="font-size: 11px; color: #77716a; letter-spacing: .1em;">01 — 05 BEGINNER</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px;">
+      <div style="background: #191919; overflow: hidden;">
+        <div style="position: relative; height: 200px;">
+          <img src="feature-crossover.webp" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) brightness(.8);">
+          <div style="position: absolute; top: 14px; left: 14px; font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; color: #f05a36;">01</div>
+        </div>
+        <div style="padding: 20px;">
+          <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase;">WNBA超入門</div>
+          <div style="font-size: 11px; color: #aaa49d; margin-top: 8px; line-height: 1.7;">40分制と3Pラインの違いを5分で。</div>
+        </div>
+      </div>
+      <div style="background: #191919; overflow: hidden;">
+        <div style="position: relative; height: 200px;">
+          <img src="japan-challenger.webp" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) brightness(.8);">
+          <div style="position: absolute; top: 14px; left: 14px; font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; color: #f05a36;">05</div>
+        </div>
+        <div style="padding: 20px;">
+          <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase;">日本人挑戦者ウォッチ</div>
+          <div style="font-size: 11px; color: #aaa49d; margin-top: 8px; line-height: 1.7;">歴代5人と2026年の現在地。</div>
+        </div>
+      </div>
+      <div style="background: #191919; overflow: hidden;">
+        <div style="position: relative; height: 200px;">
+          <img src="hero-arena.webp" style="width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) brightness(.8);">
+          <div style="position: absolute; top: 14px; left: 14px; font-family: 'Oswald', sans-serif; font-size: 34px; font-weight: 700; color: #f05a36;">04</div>
+        </div>
+        <div style="padding: 20px;">
+          <div style="font-family: 'Oswald', sans-serif; font-size: 17px; font-weight: 600; text-transform: uppercase;">全15チーム勢力図</div>
+          <div style="font-size: 11px; color: #aaa49d; margin-top: 8px; line-height: 1.7;">推しチーム診断つき早見表。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 30px 56px; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; font-size: 10px; color: #77716a; letter-spacing: .12em;">
+    <span>EDITORIAL: CLAUDE · GPT · GEMINI</span>
+    <span>© 2026 WNBA JAPAN</span>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

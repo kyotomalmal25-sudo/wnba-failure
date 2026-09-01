@@ -1,0 +1,16 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "A｜静謐（明朝）", "x": 0, "y": 0, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "IndexBoard.dc.html", "title": "B｜索引先行（機能派）", "x": 1560, "y": 0, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "CourtBoard.dc.html", "title": "C｜スポーツメディア（黒）", "x": 3120, "y": 0, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "UpliftBoard.dc.html", "title": "D｜柔らかいSaaS風", "x": 4680, "y": 0, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "MagazineBoard.dc.html", "title": "E｜雑誌コラージュ", "x": 0, "y": 1020, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "StatBoard.dc.html", "title": "F｜数字で語る静けさ", "x": 1560, "y": 1020, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "SplitBoard.dc.html", "title": "G｜左右分割ヒーロー", "x": 3120, "y": 1020, "w": 1440, "h": 900, "print": "flow" },
+    { "file": "RailBoard.dc.html", "title": "H｜サイドレール常設ナビ", "x": 4680, "y": 1020, "w": 1660, "h": 900, "print": "flow" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -140, "w": 1200, "text": "トップページ方向性8案。写真とアクセントカラー（オレンジ #f05a36 / ターコイズ #3ed6c7・#1fa083）は実物と同じものを仮素材として使用。写真自体は本番では未使用（差し替え予定）。骨格・タイポ・トーンだけを比較するための叩き台。A〜Fは前回セット、G・Hは今回追加分。" }
+  ],
+  "launch": { "view": "canvas" }
+}

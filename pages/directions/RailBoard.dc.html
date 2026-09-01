@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #fbfaf7; }
+    a { color: #1fa083; text-decoration: none; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; display: flex; background: #fbfaf7; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; color: #373431;">
+
+  <!-- 左サイドレール：常設ナビ、静かな縦組み -->
+  <div style="width: 220px; flex-shrink: 0; background: #101010; color: #f4f1eb; padding: 40px 30px; min-height: 900px; display: flex; flex-direction: column; justify-content: space-between;">
+    <div>
+      <div style="font-size: 15px; font-weight: 700; line-height: 1.5; margin-bottom: 56px;">WNBA<br>日本語<br>ポータル</div>
+      <div style="display: flex; flex-direction: column; gap: 22px; font-size: 12px;">
+        <span style="color: #3ed6c7;">● はじめる</span>
+        <span style="color: #d5d1cb;">選手</span>
+        <span style="color: #d5d1cb;">チーム</span>
+        <span style="color: #d5d1cb;">日本人選手</span>
+        <span style="color: #d5d1cb;">深く読む</span>
+      </div>
+    </div>
+    <div style="font-size: 10px; color: #77716a; letter-spacing: .1em;">© 2026<br>WNBA JAPAN</div>
+  </div>
+
+  <!-- 右メインカラム -->
+  <div style="flex: 1; padding: 64px 64px 0;">
+    <div style="display: grid; grid-template-columns: 1fr 420px; gap: 50px; align-items: center; padding-bottom: 70px;">
+      <div>
+        <div style="font-size: 11px; color: #1fa083; font-weight: 600; letter-spacing: .08em; margin-bottom: 24px;">2026 SEASON GUIDE</div>
+        <div style="font-size: 48px; font-weight: 700; line-height: 1.32; color: #101010; letter-spacing: -.01em;">
+          WNBAを知る、<br>いちばん近い道。
+        </div>
+        <div style="font-size: 14px; line-height: 1.95; color: #6d6861; margin-top: 28px; max-width: 420px;">
+          NBAは知っている。WNBAはまだ。8本の記事で、その距離を埋めます。
+        </div>
+      </div>
+      <img src="feature-crossover.webp" style="width: 420px; height: 320px; object-fit: cover; border-radius: 6px; filter: saturate(.6);">
+    </div>
+
+    <!-- 記事カード：3列、レールがあるので圧迫感を出さないよう余白広め -->
+    <div style="padding: 50px 0 60px; border-top: 1px solid rgba(16,16,16,.1);">
+      <div style="font-size: 12px; font-weight: 600; color: #101010; margin-bottom: 30px; letter-spacing: .04em;">START HERE — 入門3本</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+        <div>
+          <div style="height: 4px; width: 36px; background: #f05a36; margin-bottom: 18px;"></div>
+          <div style="font-size: 15px; font-weight: 600; color: #101010; line-height: 1.6;">WNBA超入門</div>
+          <div style="font-size: 11px; color: #6d6861; margin-top: 10px; line-height: 1.7;">40分制と3Pラインの違いを5分で。</div>
+        </div>
+        <div>
+          <div style="height: 4px; width: 36px; background: #f05a36; margin-bottom: 18px;"></div>
+          <div style="font-size: 15px; font-weight: 600; color: #101010; line-height: 1.6;">日本から見る方法</div>
+          <div style="font-size: 11px; color: #6d6861; margin-top: 10px; line-height: 1.7;">Prime VideoとLeague Passの比較。</div>
+        </div>
+        <div>
+          <div style="height: 4px; width: 36px; background: #1fa083; margin-bottom: 18px;"></div>
+          <div style="font-size: 15px; font-weight: 600; color: #101010; line-height: 1.6;">日本人挑戦者ウォッチ</div>
+          <div style="font-size: 11px; color: #6d6861; margin-top: 10px; line-height: 1.7;">歴代5人と2026年の現在地。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

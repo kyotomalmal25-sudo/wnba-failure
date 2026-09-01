@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; background: #f4f1eb; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; color: #373431; }
+    a { color: #f05a36; text-decoration: none; } a:hover { color: #c8482c; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #f4f1eb; font-family: 'IBM Plex Sans JP', system-ui, sans-serif; color: #373431;">
+
+  <!-- nav -->
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 30px 90px; border-bottom: 1px solid rgba(16,16,16,.1);">
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-family: 'Zen Old Mincho', serif; font-size: 19px; letter-spacing: .04em; color: #101010;">WNBA 日本語ポータル</span>
+    </div>
+    <div style="display: flex; gap: 34px; font-size: 12px; color: #6d6861; letter-spacing: .04em;">
+      <span>はじめる</span><span>選手</span><span>チーム</span><span>日本人選手</span><span>深く読む</span>
+    </div>
+  </div>
+
+  <!-- hero: 余白と縦組みリードの静かな見開き -->
+  <div style="display: grid; grid-template-columns: 1fr 470px; gap: 0; align-items: end; padding: 118px 90px 96px;">
+    <div style="max-width: 640px;">
+      <div style="font-size: 10px; letter-spacing: .34em; color: #6d6861; margin-bottom: 46px;">2026 SEASON &nbsp;/&nbsp; 第 01 号</div>
+      <div style="font-family: 'Zen Old Mincho', serif; font-size: 76px; line-height: 1.32; color: #101010; letter-spacing: .01em;">
+        知らない<span style="color: #f05a36;">リーグ</span>を、<br>
+        読むことから。
+      </div>
+      <div style="width: 54px; height: 1px; background: #101010; margin: 52px 0 34px;"></div>
+      <div style="font-size: 14px; line-height: 2.3; color: #6d6861; max-width: 430px;">
+        NBAは知っている。でもWNBAはまだ知らない。<br>
+        その距離を、8本の記事で埋めるための場所です。
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <img src="hero-arena.webp" style="width: 470px; height: 560px; object-fit: cover; display: block; filter: saturate(.55) contrast(1.02);">
+      <div style="font-size: 10px; color: #6d6861; line-height: 1.7;">コートへ向かう通路。試合が始まる前の、いちばん静かな時間。</div>
+    </div>
+  </div>
+
+  <!-- 目次 -->
+  <div style="padding: 0 90px 110px;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 26px; border-bottom: 1px solid #101010;">
+      <span style="font-family: 'Zen Old Mincho', serif; font-size: 27px; color: #101010;">目次</span>
+      <span style="font-size: 10px; letter-spacing: .3em; color: #6d6861;">CONTENTS &nbsp;— &nbsp;8 ARTICLES</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+      <div style="display: grid; grid-template-columns: 76px 1fr 300px 110px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(16,16,16,.11);">
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 24px; color: #f05a36;">壱</span>
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 23px; color: #101010; letter-spacing: .02em;">NBAファン向け WNBA超入門</span>
+        <span style="font-size: 12px; color: #6d6861; line-height: 1.85;">40分制、3Pライン、ロスター。違いだけを5分で。</span>
+        <span style="font-size: 10px; color: #6d6861; letter-spacing: .12em; text-align: right;">読む →</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 76px 1fr 300px 110px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(16,16,16,.11);">
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 24px; color: #f05a36;">弐</span>
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 23px; color: #101010; letter-spacing: .02em;">日本からWNBAを見る方法</span>
+        <span style="font-size: 12px; color: #6d6861; line-height: 1.85;">Prime VideoとLeague Pass、料金と手順。</span>
+        <span style="font-size: 10px; color: #6d6861; letter-spacing: .12em; text-align: right;">読む →</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 76px 1fr 300px 110px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(16,16,16,.11);">
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 24px; color: #f05a36;">参</span>
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 23px; color: #101010; letter-spacing: .02em;">今見るべきスーパースター10選</span>
+        <span style="font-size: 12px; color: #6d6861; line-height: 1.85;">誰を知れば、いまのリーグが見えるのか。</span>
+        <span style="font-size: 10px; color: #6d6861; letter-spacing: .12em; text-align: right;">読む →</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 76px 1fr 300px 110px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(16,16,16,.11);">
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 24px; color: #f05a36;">肆</span>
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 23px; color: #101010; letter-spacing: .02em;">全15チーム一覧・勢力図</span>
+        <span style="font-size: 12px; color: #6d6861; line-height: 1.85;">推しチーム診断つき。どこを応援するか決める。</span>
+        <span style="font-size: 10px; color: #6d6861; letter-spacing: .12em; text-align: right;">読む →</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 76px 1fr 300px 110px; gap: 24px; align-items: center; padding: 30px 0; border-bottom: 1px solid rgba(16,16,16,.11);">
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 24px; color: #f05a36;">伍</span>
+        <span style="font-family: 'Zen Old Mincho', serif; font-size: 23px; color: #101010; letter-spacing: .02em;">日本人WNBA挑戦者ウォッチ</span>
+        <span style="font-size: 12px; color: #6d6861; line-height: 1.85;">歴代5人の軌跡と、2026年のいま。</span>
+        <span style="font-size: 10px; color: #6d6861; letter-spacing: .12em; text-align: right;">読む →</span>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 40px; margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(16,16,16,.11); font-size: 11px; color: #6d6861;">
+      <span style="letter-spacing: .2em;">六 &nbsp;WNBAをNBAに翻訳する</span>
+      <span style="letter-spacing: .2em;">七 &nbsp;WNBA観戦リテラシー</span>
+      <span style="letter-spacing: .2em;">八 &nbsp;WNBAビジネス白書</span>
+    </div>
+  </div>
+
+  <!-- footer sliver -->
+  <div style="padding: 54px 90px 46px; background: #101010; color: #f4f1eb;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+      <div style="font-family: 'Zen Old Mincho', serif; font-size: 15px; letter-spacing: .1em;">編集：Claude ・ GPT ・ Gemini</div>
+      <div style="font-size: 10px; color: #77716a; letter-spacing: .16em;">© 2026 WNBA JAPAN</div>
+    </div>
+    <div style="font-family: 'Zen Old Mincho', serif; font-size: 96px; letter-spacing: .05em; margin-top: 34px; line-height: 1;">WNBA 日本語ポータル</div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>
