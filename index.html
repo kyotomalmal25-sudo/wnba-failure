@@ -30,7 +30,11 @@ body{margin:0;background:var(--paper);color:var(--body);
 .side .it{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;
  background:none;border:0;color:rgba(239,236,229,.72);padding:9px 22px;cursor:pointer;
  font-family:inherit;border-left:2px solid transparent}
+.side .it-link{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;
+ background:none;border:0;color:rgba(239,236,229,.72);padding:9px 22px;
+ font-family:inherit;border-left:2px solid transparent;text-decoration:none}
 .side .it:hover{background:rgba(255,255,255,.05);color:#efece5}
+.side .it-link:hover{background:rgba(255,255,255,.05);color:#efece5}
 .side .it.on{background:rgba(255,255,255,.09);color:#fff;border-left-color:var(--hit)}
 .side .it .k{font-family:'IBM Plex Mono',monospace;font-size:10px;
  color:rgba(239,236,229,.4);padding-top:3px;flex:0 0 16px}
@@ -60,6 +64,7 @@ body{margin:0;background:var(--paper);color:var(--body);
 @media(max-width:1100px){
  .shell{grid-template-columns:196px 1fr}
  .side .it i{display:none}
+ .side .it-link i{display:none}
  .side .it b{font-size:12px}
  .stage{padding:18px 16px 50px}
 }
@@ -69,6 +74,7 @@ body{margin:0;background:var(--paper);color:var(--body);
  .side .bn{font-size:11px;letter-spacing:.06em}
  .side .grp{padding:14px 12px 7px;font-size:8px;letter-spacing:.14em;line-height:1.5}
  .side .it{padding:8px 12px;gap:7px}
+ .side .it-link{padding:8px 12px;gap:7px}
  .side .it .k{flex:0 0 13px;font-size:9px}
  .side .it b{font-size:11px;line-height:1.45}
  .side .foot{padding:18px 12px 0;font-size:8.5px}
@@ -165,6 +171,8 @@ footer{margin-top:96px;background:var(--ink);color:var(--paper);padding:56px 0 3
     <div class="grp mono">はじめに</div>
     <button class="it on" data-t="v-log"><span class="k">01</span>
       <span class="tx"><b>記録</b><i>何を言ったら何が変わったか</i></span></button>
+    <a class="it-link" href="pages/log.html"><span class="k">↗</span>
+      <span class="tx"><b>全文ログ</b><i>その後の制作ログを読む</i></span></a>
 
     <div class="grp mono">もともと作るつもりだったもの</div>
     <button class="it" data-t="v-sol"><span class="k">00</span>
